@@ -21,6 +21,7 @@ void printI2CError(uint8_t error, uint8_t address)
   case 2:
     Serial.println("Received NACK on transmit of address");
     break;
+  case 3:
     Serial.println("Received NACK on transmit of data");
     break;
   case 4:
@@ -79,8 +80,7 @@ void loop()
     }
   }
 
-  // 固定アドレス0x08からデータを読み取り
-  for (uint8_t address = 1; address <= 30; address++)
+  for (uint8_t address = 1; address <= 127; address++)
   {
     delay(1); // 1スキャンごとに待つ
     Wire.beginTransmission(address);
