@@ -97,9 +97,9 @@ void loop()
     Wire.requestFrom(address, (uint8_t)2);
     if (Wire.available() >= 2)
     {
-      int8_t sensorValue_MSB = Wire.read();
-      int8_t sensorValue_LSB = Wire.read();
-      int sensorValue = (sensorValue_MSB << 8) | sensorValue_LSB;
+      uint8_t sensorValue_MSB = Wire.read();
+      uint8_t sensorValue_LSB = Wire.read();
+      uint16_t sensorValue = (sensorValue_MSB << 8) | sensorValue_LSB;
       Serial.print("Address: 0x");
       Serial.print(address, HEX);
       Serial.print(" Value: ");
